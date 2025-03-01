@@ -1,0 +1,15 @@
+<svg width="100%" height="160px" viewBox="0 0 100 160">
+  <rect x="0" y="0" width="100" height="160" fill="white" />
+  <rect x="0" y="0" width="100" height="160" fill="rgba(255, 255, 255, 0.2)">
+    <animate attributeName="width" from="0" to="100" dur="2s" />
+    <animate attributeName="height" from="0" to="160" dur="2s" />
+  </rect>
+  <rect x="0" y="0" width="100" height="160" fill="rgba(255, 255, 255, 0.4)">
+    <animate attributeName="width" from="0" to="100" dur="3s" />
+    <animate attributeName="height" from="0" to="160" dur="3s" />
+  </rect>
+  <rect x="0" y="0" width="100" height="160" fill="rgba(255, 255, 255, 0.6)">
+    <animate attributeName="width" from="0" to="100" dur="4s" />
+    <animate attributeName="height" from="0" to="160" dur="4s" />
+  </rect>
+</svg>
