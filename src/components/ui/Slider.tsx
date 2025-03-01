@@ -1,7 +1,6 @@
-import React from 'react'
 import { Carousel, Container, Image } from 'react-bootstrap'
 
-const Slider = ({sliderProps}: any) => {
+const Slider = ({sliderProps}: { sliderProps: {ad1: string, bamb: string, stud: string, caroussTitle: string }}) => {
     const {ad1, bamb, stud, caroussTitle } = sliderProps
 
   return (

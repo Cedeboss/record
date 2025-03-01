@@ -1,7 +1,6 @@
-import React from 'react'
 import { Placeholder } from 'react-bootstrap'
 
-const TablePlaceHolder = ({row, col}: any) => {
+const TablePlaceHolder = ({row, col}: {row: number, col: number}) => {
   return (
     <>
                 {Array.from({ length: row })?.map((_, indx: number) => (

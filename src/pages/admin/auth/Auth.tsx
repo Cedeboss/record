@@ -3,15 +3,15 @@ import { Alert, Button, Card, Col, Container, Form, InputGroup, Row, Spinner } f
 import { supabase } from '../../../utils/supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { authAdminType } from '../../../types/types';
-import adminUserStore from '../../../stores/adminUserStore';
+import adminUserStore, { UserState } from '../../../stores/adminUserStore';
 
 
 const Auth = () => {
 
   const navigate = useNavigate()
 
-  const dataStore = adminUserStore((state: any) => state)
-  const authLogin = adminUserStore((state: any) => state.authLogin)
+  // const dataStore = adminUserStore((state: UserState) => state)
+  const authLogin = adminUserStore((state: UserState) => state.authLogin)
 
     const [isError, setIsError] = React.useState<boolean>(false);
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
@@ -21,8 +21,8 @@ const Auth = () => {
         password: "",
     });
 
-    const handleChange = (e: any) => {
-        setFormData((prev: any) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData((prev: authAdminType) => {
         return{
                 ...prev,
                 [e.target?.name]:e.target?.value
@@ -31,7 +31,7 @@ const Auth = () => {
 
     }
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setIsLoading(true)
         setIsError(false)
@@ -62,11 +62,12 @@ const Auth = () => {
     }
 
     const getUserData = async(userEmail: string | undefined) => {
-      let { data: users, error } = await supabase
+      const { data: users, error } = await supabase
         .from("users")
         .select("first_name, last_name, role, id")
         .eq("email", userEmail)
         .single();
+        console.log(error)
   
 
   if(users){

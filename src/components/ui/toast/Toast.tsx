@@ -1,13 +1,13 @@
-import { Alert, Toast, ToastContainer } from "react-bootstrap"
+import { Toast, ToastContainer } from "react-bootstrap"
 import { ToastType } from "../../../defitions/ToatsType"
 
 interface ToastDataType {
     showToast: boolean
     toggleShowToast: () => void
-    toastdata: ToastType
+    toastData: ToastType
 }
 
-export const ToastComp = ({ToastProps}: any) => {
+export const ToastComp = ({ToastProps}: {ToastProps: ToastDataType}) => {
 
 const {showToast, toggleShowToast, toastData} = ToastProps
 

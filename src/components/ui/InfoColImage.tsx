@@ -1,7 +1,6 @@
-import React from 'react'
 import { Container, Row, Col, Card, Image } from 'react-bootstrap'
 
-const InfoColImage = ({ad1}: any) => {
+const InfoColImage = ({ad1}: {ad1: string}) => {
   return (
     <Container fluid>
     <Row>

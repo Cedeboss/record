@@ -6,7 +6,7 @@ import { supabase } from "../utils/supabaseClient";
 class MessageService{
     async sendMessage  (formData: contactDataType, toastData: ToastType, setToatsData: React.Dispatch<React.SetStateAction<ToastType>>, toggleShowToast: () => void) {
         try {
-          const { data: dataz, error: error } = await supabase
+          const { data: data, error: error } = await supabase
             .from("Zmessages")
             .insert([
               {
@@ -17,7 +17,7 @@ class MessageService{
                 state: formData?.state
               },
             ]);
-        
+        console.log(data)
           if (error) {
             setToatsData({
               ...toastData,

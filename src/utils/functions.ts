@@ -12,8 +12,8 @@ export const _counter = (data: number, setData: React.Dispatch<SetStateAction<nu
   // user function
   ////////////////////////////
 
-export const _getUsers = async (setIsLoading: any, setUsers: any) => {
-  let { data: user, error } = await supabase
+export const _getUsers = async (setIsLoading: React.Dispatch<SetStateAction<boolean>>, setUsers: React.Dispatch<SetStateAction<userType[]>>) => {
+  const { data: user, error } = await supabase
     .from("users")
     .select("id, first_name, last_name, role, email")
     .eq("status", true)
@@ -31,13 +31,13 @@ export const _getUsers = async (setIsLoading: any, setUsers: any) => {
 };
 
 
-export const _addUser = async (formData: any, users: [userType], setUsers: React.Dispatch<SetStateAction<userType[]>>, handleClose: () => void) => {
+export const _addUser = async (formData: userType, users: userType[], setUsers: React.Dispatch<SetStateAction<userType[]>>, handleClose: () => void) => {
   const { data, error } = await supabase
     .from("users")
     .insert([
       {
-        first_name: formData?.firstName,
-        last_name: formData?.lastName,
+        first_name: formData?.first_name,
+        last_name: formData?.last_name,
         email: formData?.email,
         password: formData?.password,
         role: formData?.role,
@@ -50,8 +50,8 @@ export const _addUser = async (formData: any, users: [userType], setUsers: React
       setUsers([
         ...users,
         {
-          first_name: formData?.firstName,
-          last_name: formData?.lastName,
+          first_name: formData?.first_name,
+          last_name: formData?.last_name,
           email: formData?.email,
           password: formData?.password,
           role: formData?.role,
@@ -64,7 +64,7 @@ export const _addUser = async (formData: any, users: [userType], setUsers: React
   }
 }
 
-export const _editUser = async (formData: any, users: [userType], setUsers: React.Dispatch<SetStateAction<userType[]>>, handleCloseEdit: () => void ) => {
+export const _editUser = async (formData: userType, users: userType[], setUsers: React.Dispatch<SetStateAction<userType[]>>, handleCloseEdit: () => void ) => {
   const { data, error } = await supabase
     .from("users")
     .update({
@@ -76,7 +76,7 @@ export const _editUser = async (formData: any, users: [userType], setUsers: Reac
     .eq("id", formData?.id)
     .select();
 
-  const newData = users?.map((user: any) => {
+  const newData = users?.map((user: userType) => {
     if (user.id === formData.id) {
       return {
         ...user,

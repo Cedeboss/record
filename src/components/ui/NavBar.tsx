@@ -1,41 +1,41 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import React from 'react'
 import { Container, Row, Col, Navbar, Offcanvas, Nav, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useNameStore } from '../../stores/NameStore';
 // import { navBarType } from '../layouts/public/PublicLayout';
 
-interface navBarType{
-  isDarkTheme: boolean;
-  setIsDarkTheme:  Dispatch<SetStateAction<boolean>>;
-}
+// interface navBarType{
+//   isDarkTheme: boolean;
+//   setIsDarkTheme:  Dispatch<SetStateAction<boolean>>;
+// }
 
-const NavBar = ({navBarProps}: any) => {
+const NavBar = () => {
 
-  const timer: any = useNameStore.use.name()
+  const timer: string = useNameStore.use.name()
 
-  const {isDarkTheme, setIsDarkTheme}: navBarType = navBarProps;
+  // const {isDarkTheme, setIsDarkTheme}: navBarType = navBarProps;
 
   const [showOffcanvas, setShowOffcanvas] = React.useState<boolean>(false)
   const handleCloseOffcanvas = () => setShowOffcanvas(false)
   const handleShowOffcanvas = () => setShowOffcanvas(true)
 
 
-  const toggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
-  };
+  // const toggleTheme = () => {
+  //   setIsDarkTheme(!isDarkTheme);
+  // };
 
 
   return (
     <Navbar
       className="fixed-top nav-bar  opacity-100"
-      data-theme={isDarkTheme ? "dark" : "light"}
+      // data-theme={isDarkTheme ? "dark" : "light"}
       expand="md"
     >
       <Container fluid>
         <Link
           to="/"
           className="nav-link"
-          data-theme={isDarkTheme ? "dark" : "light"}
+          // data-theme={isDarkTheme ? "dark" : "light"}
         >
           <Row className="arc">
             <Col className="text-center align-middle">
@@ -69,42 +69,42 @@ const NavBar = ({navBarProps}: any) => {
             <Link
               to="/studio"
               className="nav-link p-2 m-auto mx-0"
-              data-theme={isDarkTheme ? "dark" : "light"}
+              // data-theme={isDarkTheme ? "dark" : "light"}
             >
               Le studio
             </Link>
             <Link
               to="/nos-prestations"
               className="nav-link p-2 m-auto mx-0"
-              data-theme={isDarkTheme ? "dark" : "light"}
+              // data-theme={isDarkTheme ? "dark" : "light"}
             >
               Prestations
             </Link>
             <Link
               to="/nos-realisations"
               className="nav-link p-2 m-auto mx-0"
-              data-theme={isDarkTheme ? "dark" : "light"}
+              // data-theme={isDarkTheme ? "dark" : "light"}
             >
               Réalisations
             </Link>
             <Link
               to="/"
               className="nav-link p-2 m-auto mx-0"
-              data-theme={isDarkTheme ? "dark" : "light"}
+              // data-theme={isDarkTheme ? "dark" : "light"}
             >
               Références
             </Link>
             <Link
               to="/contact"
               className="nav-link p-2 m-auto mx-0"
-              data-theme={isDarkTheme ? "dark" : "light"}
+              // data-theme={isDarkTheme ? "dark" : "light"}
             >
               Contacts
             </Link>
             <Link
               to="/"
               className="nav-link p-2 m-auto mx-0"
-              data-theme={isDarkTheme ? "dark" : "light"}
+              // data-theme={isDarkTheme ? "dark" : "light"}
             >
               à propos
             </Link>

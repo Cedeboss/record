@@ -1,6 +1,6 @@
-import React from "react";
-import { Col, Container, Image, Row } from "react-bootstrap";
-import separator3 from "./../../../styles/images/separator3.svg";
+// import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
+// import separator3 from "./../../../styles/images/separator3.svg";
 import { Link } from "react-router-dom";
 // import { Link } from 'react-router-dom'
 

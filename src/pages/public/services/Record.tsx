@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container, Image } from 'react-bootstrap';
 import ad1 from '../../styles/ima ges/enregistrement.jpg'
 

@@ -1,14 +1,22 @@
 import React from 'react'
-import { Button, Card, CardBody, Col, Container, Placeholder, Row, Table } from 'react-bootstrap'
+import { Button, Card, Col, Container, Row, Table } from 'react-bootstrap'
 import { supabase } from '../../../utils/supabaseClient';
 import TablePlaceHolder from '../../../components/placeHolder/TablePlaceHolder';
 
+interface MessagesType {
+  lastName: string
+  firstName: string
+  email: string
+  objet: string
+  message: string
+}
+
 const Messages = () => {
 
-    const [isError, setIsError] = React.useState<boolean>(false);
+    // const [isError, setIsError] = React.useState<boolean>(false);
     const [isLoading, setIsLoading] = React.useState<boolean>(true);
-    const [messages, setMessages] = React.useState<any>([]);
-    const [selectedMessage, setSelectedMessage] = React.useState<any>(undefined);
+    const [messages, setMessages] = React.useState<MessagesType[]>([]);
+    const [selectedMessage, setSelectedMessage] = React.useState<MessagesType>({} as MessagesType);
 
 
     React.useEffect(() => {
@@ -17,7 +25,7 @@ const Messages = () => {
 
  
     const getmsg = async () => {
-        let { data: msg, error } = await supabase.from('Zmessages').select('*')
+        const { data: msg, error } = await supabase.from('Zmessages').select('*')
     setIsLoading(true)
     if (msg) {
         setMessages(msg)
@@ -36,7 +44,7 @@ const Messages = () => {
           <Container className='my-3'>
             <Row>
               <Col xs={1} className='m-auto'>
-                <Button variant='transparent' onClick={() => setSelectedMessage(undefined)}>
+                <Button variant='transparent' onClick={() => setSelectedMessage({} as MessagesType)}>
                   
                   <i className='ri-arrow-left-line fs-5 '></i>
                 </Button>
@@ -72,7 +80,7 @@ const Messages = () => {
               {isLoading ? (
                 <TablePlaceHolder row={10} col={6} />
               ) : (
-                messages?.map((msg: any, indx: number) => (
+                messages?.map((msg: MessagesType, indx: number) => (
                   <tr key={indx} onClick={() => setSelectedMessage(msg)}>
                     <td>{msg?.lastName}</td>
                     <td>{msg?.firstName}</td>

@@ -203,8 +203,8 @@ h4, h3{
   color: #f48ed4 !important;
   /* color: #8eadf4 !important; */
 }
-
-.text-light-input{
+/*  */
+/* .text-light-input{ */
   /* color: #754aad !important; */
   /* color: #adf48e !important;
   color: #04fa0c !important; */
@@ -214,7 +214,7 @@ h4, h3{
   
   /* color: linear-gradient(to right, #5fffcf, #7bfe8f); */
    
-}
+/* } */
 
 
 @media (max-width: 878px) {

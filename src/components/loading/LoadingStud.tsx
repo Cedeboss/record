@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, Col, Container, Placeholder, Row } from "react-bootstrap";
 
 const LoadingStud = () => {

@@ -8,10 +8,17 @@ export type UserState = {
   id: string | null;
   firstname: string | null;
   lastname: string | null;
-  token: any | null;
-  roles: any | null;
+  token: string | null;
+  roles: "ROLE_SUPER_ADMIN" | "ROLE_ADMIN" | "ROLE_USER" | undefined;
   email: string | null;
-  authLogin: any;
+  authLogin: (
+    id: string | null,
+    firstname: string | null,
+    lastname: string | null,
+    token: string | null,
+    roles: "ROLE_SUPER_ADMIN" | "ROLE_ADMIN" | "ROLE_USER" | undefined,
+    email: string | null
+  ) => void;
   authLogout: () => void;
 };
 
@@ -23,7 +30,7 @@ const adminUserStore = create(
       firstname: null,
       lastname: null,
       token: null,
-      roles: null,
+      roles: undefined,
       email: null,
 
       // methods for manipulating state
@@ -32,10 +39,10 @@ const adminUserStore = create(
         firstname: string | null,
         lastname: string | null,
         token: string | null,
-        roles: any | null,
+        roles: "ROLE_SUPER_ADMIN" | "ROLE_ADMIN" | "ROLE_USER" | undefined,
         email: string | null
       ) =>
-        set((state: any) => ({
+        set(() => ({
           id: id,
           firstname: firstname,
           lastname: lastname,
@@ -44,12 +51,12 @@ const adminUserStore = create(
           email: email,
         })),
       authLogout: () =>
-        set((state: any) => ({
+        set(() => ({
           id: null,
           firstname: null,
           lastname: null,
           token: null,
-          roles: null,
+          roles: undefined,
           email: null,
         })),
     }),
