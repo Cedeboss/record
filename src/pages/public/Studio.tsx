@@ -1,4 +1,3 @@
-import React from 'react'
 import ad1 from '../../styles/images/poudre.jpg'
 import bgStud from '../../styles/images/backgroundStudio.jpg'
 import { Container, Row, Col, Card, Image } from 'react-bootstrap'

@@ -1,6 +1,5 @@
 import React, { FormEvent } from "react";
 import {
-  Alert,
   Button,
   Card,
   Col,
@@ -15,9 +14,9 @@ import { Link } from "react-router-dom";
 import { userUpdate } from "../../stores/_UserStore";
 import { contactDataType } from "../../types/types";
 import MultiPictures from "../../components/ui/MultiPictures";
-import Floating from "../../components/ui/FloatingInput";
-import { formFields, multiPictureProps } from "../../utils/formFields";
-import { supabase } from "../../utils/supabaseClient";
+// import Floating from "../../components/ui/FloatingInput";
+import {multiPictureProps } from "../../utils/formFields";
+// import { supabase } from "../../utils/supabaseClient";
 import { ToastComp } from "../../components/ui/toast/Toast";
 import { ToastType } from "../../defitions/ToatsType";
 import MessageService from "../../services/MessageService";
@@ -37,7 +36,7 @@ const Contact = () => {
     message: "",
     icon: "",
     type: "",
-    delay: null,
+    delay: undefined,
     // title: "succès",
     // message: "Message envoyé",
     // icon: "ri-check-line",
@@ -100,9 +99,9 @@ const Contact = () => {
   };
 
   //save state of form field
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //uddate user state
-    setFormData((prev: any) => {
+    setFormData((prev: contactDataType) => {
       return {
         ...prev,
         [e.target?.name]: e.target?.value,

@@ -1,5 +1,4 @@
-import React from 'react'
-import { Row, Col, Card, Image, Container } from 'react-bootstrap'
+import { Row, Col, Card, Image } from 'react-bootstrap'
 
 import ad1 from '../../styles/images/poudre.jpg'
 import { Link } from 'react-router-dom';
@@ -39,7 +38,7 @@ const ThreeCols = ( ) => {
 
   return (
     <Row className='w-100 g-2 g-sm-1 g-md-4 px-2 px-md-4'>
-      {cardData.map((card: any, indx: number) => (
+      {cardData.map((card: cardDataType, indx: number) => (
         <Col key={indx} xs={12} sm={6} md={long} className='font-85 '>
           <Link to={`/${indx}`} className='text-decoration-none'>
             {card.imageCard ? (

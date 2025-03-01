@@ -1,4 +1,3 @@
-import React from "react";
 import { Container, Image, Row, Col, Card, Button } from "react-bootstrap";
 import Footer from "../../components/layouts/public/Footer";
 import ad1 from "../../styles/images/musicaly.jpg";

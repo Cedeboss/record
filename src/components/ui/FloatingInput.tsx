@@ -1,5 +1,4 @@
-import React from "react";
-import { Col, FloatingLabel, Form, InputGroup } from "react-bootstrap";
+import { Col, FloatingLabel, Form } from "react-bootstrap";
 
 const Floating = ({ formField, formData, handleChange }: any) => {
   

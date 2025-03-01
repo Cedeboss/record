@@ -1,4 +1,3 @@
-import React from 'react'
 import ad1 from '../../styles/images/image832.png'
 import imag2 from '../../styles/images/bambou.jpg'
 import { Container, Row, Col, Card, Button, Image } from 'react-bootstrap'

@@ -1,4 +1,3 @@
-import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AdminLayout from './components/layouts/admin/AdminLayout'
 import HomeAdmin from './pages/admin/dashboard/HomeAdmin'

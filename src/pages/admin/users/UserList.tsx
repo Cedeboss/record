@@ -1,50 +1,49 @@
 import React, { FormEvent } from 'react'
 import TablePlaceHolder from '../../../components/placeHolder/TablePlaceHolder';
-import { Card, Container, Table, Row, Col, Button, Modal, Form, FloatingLabel, Image, Placeholder } from 'react-bootstrap';
-import { supabase } from '../../../utils/supabaseClient';
+import { Card, Container, Table, Row, Col, Button } from 'react-bootstrap';
 // import { formFields } from '../../../utils/formFields';
 // import Floating from '../../../components/ui/FloatingInput';
 // import { contactDataType } from '../../../types/types';
-import imageUser from '../../../styles/images/_moon.jpg'
-import { _addUser, _deleteUser, _editUser, _getUsers } from '../../../utils/functions';
-import { userType } from '../../../defitions/defitions';
+import { _addUser, _editUser, _getUsers } from '../../../utils/functions';
 import { AddUserModal, DeleteUserModal, EditUserModal } from '../../../components/admin/user/modals';
+import { userType } from '../../../defitions/defitions';
 
 type addUserModalType =  {
   show: boolean;
   handleClose: () => void;
-  formData: any;
+  formData: userType;
   validated: boolean;
   handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
-  handleChange: (e: any) => void;
-  setFormData: React.Dispatch<any>;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setFormData: React.Dispatch<React.SetStateAction<userType>>;
 }
+
 
 const UserListPage = () => {
  
   // const [isError, setIsError] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
-  const [users, setUsers] = React.useState<any>([]);
-  const [selectedUser, setSelectedUser] = React.useState<any>(undefined);
+  const [users, setUsers] = React.useState<userType[]>([]);
+  const [selectedUser, setSelectedUser] = React.useState<userType>({} as userType);
 
   const [validated, setValidated] = React.useState<boolean>(false);
-  const [formData, setFormData] = React.useState<any>({
-    firstName: "",
-    lastName: "",
+  const [formData, setFormData] = React.useState<userType>({
+    first_name: "",
+    last_name: "",
     email: "",
     password: "",
-    role: "",
+    role: undefined,
   });
 
   const [show, setShow] = React.useState<boolean>(false);
 
   const handleClose = () => {
     setFormData({
-      firstName: "",
-      lastName: "",
+      first_name: "",
+    last_name: "",
       email: "",
       password: "",
-      role: "",
+      role: undefined,
     });
     setShow(false)};
   const handleShow = () => setShow(true);
@@ -54,11 +53,11 @@ const UserListPage = () => {
 
   const handleCloseDelete = () => {
     setFormData({
-      firstName: "",
-      lastName: "",
+      first_name: "",
+    last_name: "",
       email: "",
       password: "",
-      role: "",
+      role: undefined,
     });
     setShowDelete(false)};
   const handleShowDelete = () => setShowDelete(true);
@@ -68,11 +67,11 @@ const UserListPage = () => {
 
   const handleCloseEdit = () => {
     setFormData({
-      firstName: "",
-      lastName: "",
+      first_name: "",
+    last_name: "",
       email: "",
       password: "",
-      role: "",
+      role: undefined,
     })
     setShowEdit(false)};
   const handleShowEdit = () => setShowEdit(true);
@@ -94,8 +93,8 @@ const UserListPage = () => {
     } else {
       event.preventDefault();
       if (
-        formData?.firstName === formData?.lastName &&
-        formData?.firstName === formData?.email
+        formData?.first_name === formData?.last_name &&
+        formData?.first_name === formData?.email
       ) {
         alert(
           " Ceci est un BotBreaker ! Ne retentez pas c'est une perte de temps"
@@ -116,8 +115,8 @@ const UserListPage = () => {
     } else {
       event.preventDefault();
       if (
-        formData?.firstName === formData?.lastName &&
-        formData?.firstName === formData?.email
+        formData?.first_name === formData?.last_name &&
+        formData?.first_name === formData?.email
       ) {
         alert(
           " Ceci est un BotBreaker ! Ne retentez pas c'est une perte de temps"
@@ -129,9 +128,9 @@ const UserListPage = () => {
       }
     }
   };
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //update user state
-    setFormData((prev: any) => {
+    setFormData((prev: userType) => {
       return {
         ...prev,
         [e.target?.name]: e.target?.value,
@@ -189,7 +188,7 @@ return (
             <Col xs={12} className="m-auto">
               <Button
                 variant="transparent"
-                onClick={() => setSelectedUser(undefined)}
+                onClick={() => setSelectedUser({} as userType)}
               >
                 <i className="ri-arrow-left-line fs-5 "></i>
               </Button>
@@ -245,7 +244,7 @@ return (
             {isLoading ? (
               <TablePlaceHolder row={10} col={6} />
             ) : (
-              users?.map((user: any, indx: number) => (
+              users?.map((user: userType, indx: number) => (
                 <tr key={indx} className="border-start">
                   <td className="pointer" onClick={() => setSelectedUser(user)}>
                     {user?.last_name}

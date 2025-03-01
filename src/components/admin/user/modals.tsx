@@ -1,18 +1,18 @@
 import { Button, Col, FloatingLabel, Form, Modal } from "react-bootstrap";
 import { _deleteUser } from "../../../utils/functions";
-import { FormEvent } from "react";
 
-type addUserModalType =  {
-  show: boolean;
-  handleClose: () => void;
-  formData: any;
-  validated: boolean;
-  handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
-  handleChange: (e: any) => void;
-  setFormData: React.Dispatch<any>;
-}
 
-export const AddUserModal = ({addUserModalProps}: any) => {
+// type addUserModalType =  {
+//   show: boolean;
+//   handleClose: () => void;
+//   formData: any;
+//   validated: boolean;
+//   handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
+//   handleChange: (e: React.ChangeEvent) => void;
+//   setFormData: React.Dispatch<any>;
+// }
+
+export const AddUserModal = ({addUserModalProps}: {addUserModalProps: any}) => {
 
   const {
     show,
@@ -39,7 +39,7 @@ export const AddUserModal = ({addUserModalProps}: any) => {
                 type="text"
                 name={"firstName"}
                 placeholder="Prénom"
-                value={formData?.firstName}
+                value={formData?.first_name}
                 onChange={handleChange}
               />
             </FloatingLabel>
@@ -51,7 +51,7 @@ export const AddUserModal = ({addUserModalProps}: any) => {
                 type="text"
                 name={"lastName"}
                 placeholder="Nom"
-                value={formData?.lastName}
+                value={formData?.last_name}
                 onChange={handleChange}
               />
             </FloatingLabel>
