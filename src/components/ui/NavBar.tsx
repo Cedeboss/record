@@ -4,25 +4,25 @@ import { Link } from 'react-router-dom'
 import { useNameStore } from '../../stores/NameStore';
 // import { navBarType } from '../layouts/public/PublicLayout';
 
-// interface navBarType{
-//   isDarkTheme: boolean;
-//   setIsDarkTheme:  Dispatch<SetStateAction<boolean>>;
-// }
+interface navBarType{
+  isDarkTheme: boolean;
+  setIsDarkTheme:  React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const NavBar = () => {
+const NavBar = ({navBarProps}: {navBarProps: navBarType}) => {
 
   const timer: string = useNameStore.use.name()
 
-  // const {isDarkTheme, setIsDarkTheme}: navBarType = navBarProps;
+  const {isDarkTheme, setIsDarkTheme}: navBarType = navBarProps;
 
   const [showOffcanvas, setShowOffcanvas] = React.useState<boolean>(false)
   const handleCloseOffcanvas = () => setShowOffcanvas(false)
   const handleShowOffcanvas = () => setShowOffcanvas(true)
 
 
-  // const toggleTheme = () => {
-  //   setIsDarkTheme(!isDarkTheme);
-  // };
+  const toggleTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+  };
 
 
   return (
@@ -108,14 +108,14 @@ const NavBar = () => {
             >
               à propos
             </Link>
-            {/* <Button
+            <Button
               variant={"transparent"}
               onClick={toggleTheme}
               className="nav-link p-2 m-auto mx-0"
               data-theme={isDarkTheme ? "dark" : "light"}
             >
               Thème
-            </Button> */}
+            </Button>
           </Nav>
         </Navbar>
 

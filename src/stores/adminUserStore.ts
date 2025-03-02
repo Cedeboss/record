@@ -10,14 +10,14 @@ export type UserState = {
   lastname: string | null;
   token: string | null;
   roles: "ROLE_SUPER_ADMIN" | "ROLE_ADMIN" | "ROLE_USER" | undefined;
-  email: string | null;
+  email: string | undefined;
   authLogin: (
     id: string | null,
     firstname: string | null,
     lastname: string | null,
     token: string | null,
     roles: "ROLE_SUPER_ADMIN" | "ROLE_ADMIN" | "ROLE_USER" | undefined,
-    email: string | null
+    email: string | undefined
   ) => void;
   authLogout: () => void;
 };
@@ -31,7 +31,7 @@ const adminUserStore = create(
       lastname: null,
       token: null,
       roles: undefined,
-      email: null,
+      email: undefined,
 
       // methods for manipulating state
       authLogin: (
@@ -40,7 +40,7 @@ const adminUserStore = create(
         lastname: string | null,
         token: string | null,
         roles: "ROLE_SUPER_ADMIN" | "ROLE_ADMIN" | "ROLE_USER" | undefined,
-        email: string | null
+        email: string | undefined
       ) =>
         set(() => ({
           id: id,
@@ -57,7 +57,7 @@ const adminUserStore = create(
           lastname: null,
           token: null,
           roles: undefined,
-          email: null,
+          email: undefined,
         })),
     }),
     {
